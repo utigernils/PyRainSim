@@ -31,6 +31,21 @@ def flash_lamp(id):
     main.t.sleep(0.5)
     bridge.set_light(id, off_command)
 
+def preload_lights(group_name):
+    global lights
+
+    groups = bridge.get_group()
+    group_id = None
+    for group in groups:
+        if groups[group]['name'] == group_name:
+            group_id = group
+            break
+
+    if group_id is None:
+        print(f"Group '{group_name}' not found.")
+
+    lights = groups[group_id]['lights']
+
 def init_bridge(hue_bridge_ip, room, color, brightness, maxtravel):
     global bridge, room_id, lightning_color, lightning_brightness, lightning_maxtravel, on_command, off_command
     try:
@@ -38,7 +53,10 @@ def init_bridge(hue_bridge_ip, room, color, brightness, maxtravel):
         bridge.connect()
         print("Successfully connected to the Philips Hue bridge.")
 
-        room_id = room
+        preload_lights(room)
+        print(lights)
+        print(f"Preloaded lights in Group {room}!")
+
         lightning_color = color
         lightning_brightness = brightness
         lightning_maxtravel = maxtravel

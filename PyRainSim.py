@@ -7,6 +7,7 @@ from phue import Bridge
 import phue as hue
 import transmitters.light_transmitter as lights
 import transmitters.audio_transmitter as audio
+import pygame
 
 config_file = 'config.json'
 
