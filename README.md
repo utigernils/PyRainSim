@@ -10,6 +10,7 @@ It is recommended to run PyRainSim on a small server such as the Raspberry Pi to
 - Generation of random lightning strikes with variable brightness based on distance (logic isnt based on distance YET)
 - Playback of custom thunder through the Sonos system
 - Automatic retrieval of rooms and lamps contained therein from the Philips Hue Bridge
+- Setup wizard
 
 ## Installation
 
@@ -52,14 +53,12 @@ In the `config.json` file, you can adjust the following parameters:
 
 ```json
 {
-  "sonos_ip": "192.168.1.101",
-  "hue_bridge_ip": "192.168.1.100",
-  "hue_bridge_username": "yourusername",
-  "room": "bed_room",
-  "lightning_color": "200,0,255",
-  "lightning_brightness": 255,
-  "lightning_maxtravel": 5,
-  "lightning_probability": 15,
+    "sonos_ip": "192.168.1.65",
+    "hue_bridge_ip": "192.168.1.45",
+    "room": "B\u00fcro",
+    "lightning_color": "150,200,255",
+    "lightning_brightness": "255",
+    "lightning_maxtravel": "5"
 }
 ```
 
