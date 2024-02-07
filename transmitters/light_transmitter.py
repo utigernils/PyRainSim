@@ -18,7 +18,7 @@ def rgb_to_xy(red, green, blue):
 
 
 def build_command(state):
-    command = {'transitiontime': 5, 'on': True, 'bri': 254}
+    command = {'transitiontime': 0, 'on': True, 'bri': 254}
 
     command['xy'] = rgb_to_xy(lightning_color[0], lightning_color[1], lightning_color[2])
     command['bri'] = lightning_brightness
@@ -28,7 +28,7 @@ def build_command(state):
 
 def flash_lamp(id):
     bridge.set_light(id, on_command)
-    main.t.sleep(0.05)
+    main.t.sleep(0.5)
     bridge.set_light(id, off_command)
 
 def init_bridge(hue_bridge_ip, room, color, brightness, maxtravel):
@@ -47,6 +47,7 @@ def init_bridge(hue_bridge_ip, room, color, brightness, maxtravel):
         off_command = build_command(False)
 
         print("Successfully prepared the customized lamp commands from the json file.")
+
 
     except Exception as e:
         print(f"Failed to connect to the Philips Hue bridge: {e}")
