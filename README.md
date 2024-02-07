@@ -1,4 +1,4 @@
-# PyRainSim - Not Uploaded Yet
+# PyRainSim 
 
 PyRainSim is a software that simulates rain by generating random lightning strikes with varying brightness depending on the distance and thunder occurring at different intervals. These lightning strikes are then displayed on any lamp in the specified room using the Philips Hue Bridge, while simultaneously playing custom thunder through the HTTP stream for the Sonos system.
 
@@ -7,7 +7,7 @@ It is recommended to run PyRainSim on a small server such as the Raspberry Pi to
 ## Features
 
 - Connection with Philips Hue Bridge and Sonos system
-- Generation of random lightning strikes with variable brightness based on distance
+- Generation of random lightning strikes with variable brightness based on distance (logic isnt based on distance YET)
 - Playback of custom thunder through the Sonos system
 - Automatic retrieval of rooms and lamps contained therein from the Philips Hue Bridge
 
