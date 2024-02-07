@@ -19,17 +19,18 @@ config_file = 'config.json'
 
 
 def load_config(config_file):
-    global sonos_ip, hue_bridge_ip, hue_bridge_username, room, lightning_color, lightning_brightness, lightning_maxtravel, light_id
+    global sonos_ip, hue_bridge_ip, hue_bridge_username, room, lightning_color, lightning_brightness, lightning_maxtravel,
+
     with open(config_file, 'r') as f:
         config = json.load(f)
+
     sonos_ip = config["sonos_ip"]
     hue_bridge_ip = config["hue_bridge_ip"]
-    hue_bridge_username = config.get("hue_bridge_username")  # Use .get() to handle optional keys
     room = config["room"]
-    lightning_color = [int(x) for x in config["lightning_color"].split(",")]  # Split the string and convert to integers
+    lightning_color = [int(x) for x in config["lightning_color"].split(",")]
     lightning_brightness = int(config["lightning_brightness"])
     lightning_maxtravel = int(config["lightning_maxtravel"])
-    light_id = config.get("light_id")  # Use .get() to handle optional keys
+
     return config
 
 

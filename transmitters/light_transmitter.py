@@ -51,6 +51,7 @@ def preload_lights(group_name):
 
 def init_bridge(hue_bridge_ip, room, color, brightness, maxtravel):
     global bridge, room_id, lightning_color, lightning_brightness, lightning_maxtravel, on_command, off_command
+
     try:
         bridge = main.hue.Bridge(hue_bridge_ip)
         bridge.connect()

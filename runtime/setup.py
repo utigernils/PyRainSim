@@ -5,7 +5,6 @@ def run(config_file):
     print(f"The file called '{config_file}' couldn't be found.")
     print("Welcome to the setup wizard!")
 
-    # Discover Sonos devices on the network
     speakers = main.soco.discover()
 
     if speakers:
@@ -13,7 +12,7 @@ def run(config_file):
         for i, speaker in enumerate(speakers):
             print(f"{i + 1}. {speaker.player_name}")
 
-        # Prompt the user to select a Sonos device
+
         while True:
             try:
                 choice = int(input("Enter the number corresponding to the Sonos device you want to use: "))
@@ -27,7 +26,7 @@ def run(config_file):
             except ValueError:
                 print("Invalid input. Please enter a number.")
 
-        # Prompt the user to enter the IP address of the Philips Hue bridge
+
         while True:
             hue_bridge_ip = input("Enter the IP address of the Philips Hue bridge: ")
             if hue_bridge_ip:
@@ -40,7 +39,6 @@ def run(config_file):
             else:
                 print("Please enter a valid IP address.")
 
-        # Connect to the Philips Hue bridge
         bridge = main.Bridge(hue_bridge_ip)
         try:
             bridge.connect()
@@ -49,13 +47,11 @@ def run(config_file):
             print(f"Failed to connect to the Philips Hue bridge: {e}")
             return None, None
 
-        # List available rooms
         print("Available rooms:")
         rooms = bridge.get_group()
         for room_id, room_info in rooms.items():
             print(f"Room ID: {room_id}, Name: {room_info['name']}")
 
-        # Ask the user to select a room
         while True:
             room_id = input("Enter the ID of the room where the lamps for the lightning simulation should be: ")
             if room_id in rooms:
@@ -64,14 +60,10 @@ def run(config_file):
             else:
                 print("Invalid room ID. Please enter a valid ID.")
 
-        # Ask the user for additional information
         lightning_color = input("Enter the color of the lightning simulation (ex: 200,0,255): ")
         lightning_brightness = input("Enter the brightness of the lightning simulation (0-255): ")
         lightning_maxtravel = input("Enter the maximum number of lamps that can flash per lightning: ")
-        light_id = input(
-            "Enter the ID of the lamp for the lightning simulation (optional, leave empty if not applicable): ")
 
-        # Construct the configuration dictionary
         config = {
             "sonos_ip": sonos_ip,
             "hue_bridge_ip": hue_bridge_ip,
@@ -80,10 +72,7 @@ def run(config_file):
             "lightning_brightness": lightning_brightness,
             "lightning_maxtravel": lightning_maxtravel
         }
-        if light_id:
-            config["light_id"] = light_id
 
-        # Generate JSON file
         with open('config.json', 'w') as f:
             main.json.dump(config, f, indent=4)
             print("Successfully saved configuration to 'config.json'.")
