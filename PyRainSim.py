@@ -1,10 +1,16 @@
 import os
+import random
 import time as t
 import json
+import threading
+
 import runtime.setup as setup
-import soco
+import runtime.execute as exec
+
 from phue import Bridge
 import phue as hue
+import soco
+
 import transmitters.light_transmitter as lights
 import transmitters.audio_transmitter as audio
 import pygame
@@ -22,9 +28,10 @@ def load_config(config_file):
     room = config["room"]
     lightning_color = [int(x) for x in config["lightning_color"].split(",")]  # Split the string and convert to integers
     lightning_brightness = int(config["lightning_brightness"])
-    lightning_maxtravel = config["lightning_maxtravel"]
+    lightning_maxtravel = int(config["lightning_maxtravel"])
     light_id = config.get("light_id")  # Use .get() to handle optional keys
     return config
+
 
 def initialize():
     print(f"Found '{config_file}'!")
@@ -44,7 +51,7 @@ def main():
         main()
     else:
         initialize()
-
+        exec.run(lightning_maxtravel)
 
 if __name__ == "__main__":
     main()

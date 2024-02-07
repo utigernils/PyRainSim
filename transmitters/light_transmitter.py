@@ -18,7 +18,7 @@ def rgb_to_xy(red, green, blue):
 
 
 def build_command(state):
-    command = {'transitiontime': 0, 'on': True, 'bri': 254}
+    command = {'transitiontime': 10, 'on': True, 'bri': 254}
 
     command['xy'] = rgb_to_xy(lightning_color[0], lightning_color[1], lightning_color[2])
     command['bri'] = lightning_brightness
@@ -26,10 +26,13 @@ def build_command(state):
 
     return command
 
-def flash_lamp(id):
+def flash_lamp():
+    id = int(main.random.choice(lights))
     bridge.set_light(id, on_command)
     main.t.sleep(0.5)
     bridge.set_light(id, off_command)
+
+    return id
 
 def preload_lights(group_name):
     global lights
