@@ -13,6 +13,8 @@ It is recommended to run PyRainSim on a small server such as the Raspberry Pi to
 - Setup wizard
 
 ## Installation
+> [!CAUTION]
+> The Installation won't work like this yet since there is no finished build.
 
 1. Clone this repository onto your Raspberry Pi:
 
@@ -37,6 +39,8 @@ python pyrainsim.py
 ```
 
 ## Configuration
+> [!TIP]
+> You can use the setup wizard for this.
 
 In the `config.json` file, you can adjust the following parameters:
 
@@ -49,7 +53,7 @@ In the `config.json` file, you can adjust the following parameters:
 - `lightning_maxtravel`: The maximum of lamps that can flash per lightning.
 - `light_id` (Optional): If this parameter is set theres only one lamp used for the lightning simulation.
 
-## Example
+### Example
 
 ```json
 {
@@ -61,5 +65,6 @@ In the `config.json` file, you can adjust the following parameters:
     "lightning_maxtravel": "5"
 }
 ```
-
-Enjoy the soothing atmosphere of a simulated rainy night with PyRainSim! For questions or issues, please open an issue on GitHub.
+## Bug report
+For questions or issues, please open an issue on GitHub.
+Enjoy the atmosphere of a simulated rainy night with PyRainSim! 
