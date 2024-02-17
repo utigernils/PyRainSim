@@ -1,4 +1,4 @@
-> [!INFO]
+> [!NOTE]
 > The project is currently halted because of difficulties with streaming to sonos
 # PyRainSim 
 
