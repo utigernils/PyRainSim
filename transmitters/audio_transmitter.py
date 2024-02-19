@@ -31,6 +31,7 @@ def play_thunder():
     thunder_sound = main.random.choice(thunder_sounds)
     thunder_sound.play()
 
+def startHTTP():
 
 def init_sonos(sonos_ip):
     global client_ip
